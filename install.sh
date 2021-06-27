@@ -41,7 +41,7 @@ ChooseGraphic()
 PermissionTest()
 {
 	#This function allows the code to test root priviledge
-	mkdir /opt/Bri-Res &> /dev/null
+	cat /etc/shadow &> /dev/null
 	err_code=$?
 
 	if [ $err_code -ge 1 ]
