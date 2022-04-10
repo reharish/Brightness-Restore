@@ -5,7 +5,7 @@ The Script used to resolve brightness restoring issue mainly on distros running 
 * Run the Script
 `bash install.sh`
 * Will list all Graphics driver available on your device.
-* Choose your Graphics driver.`Refer: Footnote`
+* Choose your Graphics driver. `Refer: Note`
 * Close your eyes, Its done.
 
 ## Description
