@@ -3,13 +3,13 @@ Description=Backlight Backup Taker
 DefaultDependencies=no
 Before=shutdown.target reboot.target halt.target
 # This works because it is installed in the target and will be
-#   executed before the target state is entered
+# executed before the target state is entered
 # Also consider kexec.target
 
 [Service]
 Type=oneshot
-ExecStart=/opt/essential/backlight-backup.sh
-TimeoutStartSec=0
+ExecStart=/opt/Bright-Res/bright-backup.sh
+TimeoutStartSec=1
 
 [Install]
 WantedBy=halt.target reboot.target shutdown.target
