@@ -10,7 +10,8 @@ ChooseGraphic()
 	echo -n "Searching Graphics Drivers."
 	gra=`ls /sys/class/backlight`
 	echo " ~ done"
-	count=${#gra[@]} 
+	allcount=${#gra[@]}
+	count=$(($allcount+1))
 	echo $count found 
 	for i in $gra;
 	do
@@ -70,18 +71,20 @@ then
 	echo " Done "
 fi
 echo "++++++++Restore Part+++++++++"
-echo "Creating Backup-Directory - /opt/Bri-Res"
-mkdir /opt/Bri-Res
+echo "Creating Backup-Directory - /opt/Bright-Res"
+mkdir /opt/Bright-Res
 echo -n " ~ done "
-echo "Setting Permission for Backup-Directory - /opt/Bri-Res"
-chmod -R 777 /opt/Bri-Res
+echo "Setting Permission for Backup-Directory - /opt/Bright-Res"
+chmod -R 777 /opt/Bright-Res
 echo -n " ~ done "
-echo "Copying Configuration script -> /opt/Bri-Res/"
-if test -d /opt/Bri-Res;
+echo "Copying Configuration script -> /opt/Bright-Res/"
+if test -d /opt/Bright-Res;
 then
-	cp bright-backup.sh /opt/Bri-Res/
-	cp brightness /opt/Bri-Res/
-	chmod -R 777 /opt/Bri-Res
+	cp bright-backup.sh /opt/Bright-Res/
+	chmod -R ugo+x /opt/Bright-Res
+	echo "export BRIGHT_RES_DRIVER=$display" > /opt/Bright-Res/Bright-Res.rc
+	touch /opt/Bright-Res/brightness.bak
+	chmod 777 /opt/Bright-Res/brightness.bak
 	echo -n " ~ done "
 else
 	echo -n " ~  undone"
@@ -92,8 +95,8 @@ then
 	echo "Creating Restorer Script on /etc/X11/Xsession.d"
 	if test -f /etc/X11/Xsession.d/99x11-common_start;
 	then
-		cp /etc/X11/Xsession.d/99x11-common_start /opt/Bri-Res/
-		echo "cat /opt/Bri-Res/brightness > /sys/class/backlight/$display/brightness" > /etc/X11/Xsession.d/99x11-common_start
+		cp /etc/X11/Xsession.d/99x11-common_start /opt/Bright-Res/
+		echo "cat /opt/Bright-Res/brigtness- > /sys/class/backlight/$display/brightness" > /etc/X11/Xsession.d/99x11-common_start
 		echo "exec \$STARTUP" >> /etc/X11/Xsession.d/99x11-common_start
 	else
 		echo "error Creating file "
@@ -104,7 +107,7 @@ fi
 }
 
 Hooray(){
-	#echo "🅱🆁🅸-🆁🅴🆂"
+	
 	echo "
 ██████╗░██████╗░██╗░░░░░░██████╗░███████╗░██████╗
 ██╔══██╗██╔══██╗██║░░░░░░██╔══██╗██╔════╝██╔════╝
