@@ -1,11 +1,12 @@
 #!/bin/sh
 
-bright=`cat /sys/class/backlight/amdgpu_bl0/brightness` 
+. /opt/Bright-Res/Bright-Res.rc
 
-if [ "$bright" ]
+c_bright=`cat /sys/class/backlight/$BRIGHT_RES_DRIVER/brightness`
+
+if [ "$c_bright" != "" ]
 then
-    echo $bright > /opt/essential/brightness-backup.txt
-    #echo "works"
+    echo $c_bright | tee /opt/Bright-Res/brightness.bak
 else
-	exit 1
+    echo "Couldn't take Brightness backup"
 fi
