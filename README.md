@@ -1,4 +1,5 @@
-# Bright-Res
+# Brightness Restore Linux
+
 The Script used to resolve brightness restoring issue mainly on distros running mate, XFCE4 and some other lightweight distros.
 
 ## Installation
