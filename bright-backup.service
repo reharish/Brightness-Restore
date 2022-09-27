@@ -1,10 +1,7 @@
 [Unit]
-Description=Backlight Backup Taker
+Description=Backlight Backup Service
 DefaultDependencies=no
 Before=shutdown.target reboot.target halt.target
-# This works because it is installed in the target and will be
-# executed before the target state is entered
-# Also consider kexec.target
 
 [Service]
 Type=oneshot
